@@ -1,0 +1,15 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "PutItem",
+    "key": {
+       "name" : $util.dynamodb.toDynamoDBJson($ctx.args.input.name),
+    },
+    "attributeValues" : {
+        "name"    : $util.dynamodb.toDynamoDBJson($ctx.args.input.name),
+        "duration" : $util.dynamodb.toDynamoDBJson($ctx.args.input.duration),
+        "details" : $util.dynamodb.toDynamoDBJson($ctx.args.input.details),
+        "publishedYear" : $util.dynamodb.toDynamoDBJson($ctx.args.input.publishedYear),
+        "image" : $util.dynamodb.toDynamoDBJson($ctx.args.input.image),
+        "type" : $util.dynamodb.toDynamoDBJson($ctx.args.input.type)
+    }
+}

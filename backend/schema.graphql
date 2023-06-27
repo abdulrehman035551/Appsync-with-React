@@ -1,0 +1,28 @@
+schema {
+    query: Query,
+    mutation: Mutation
+}
+type Query{
+    movies:[Movie!]!
+    getSingleMovie(name:String!):Movie!
+}
+type Mutation{
+    addMovie(input:addMovieInput):Movie!
+}
+type Movie{
+    name:String
+    duration:Int
+    details:String
+    publishedYear:Int
+    image:String
+    type:String
+    
+}
+input addMovieInput{
+    name:String
+    duration:Int
+    details:String
+    publishedYear:Int
+    image:String
+    type:String
+}

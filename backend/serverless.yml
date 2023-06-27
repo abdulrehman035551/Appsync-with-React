@@ -1,0 +1,39 @@
+service: backend
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  stage: dev
+  
+
+
+plugins:
+   - serverless-appsync-plugin
+
+custom:
+  appSync:
+    name: my-movie-searching-app
+    authenticationType: API_KEY
+    mappingTemplatesLocation: ./mapping-templates
+    mappingTemplates: 
+   
+       - type: Query
+         field: getSingleMovie
+         dataSource: MovieAppTable
+       - type: Mutation
+         field: addMovie
+         dataSource: MovieAppTable
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: MovieAppTable
+        config: 
+          tableName: !Ref MovieAppTable
+
+resources:
+ Resources:
+  ${file(resources.yml)}
+
+
+
+
